@@ -18,7 +18,7 @@
 
     $.fn.extend({
         pagination : function(newOptions){
-            var options = $.extend($.pagination.defaultOptions, newOptions),
+            var options = $.extend({}, $.pagination.defaultOptions, newOptions),
                 itemsToPaginate = $(this),
                 itemsToPaginateContainer = itemsToPaginate.eq(0).parent(),
                 paginationWrapper = "<div class='" + options.paginationClass + "'></div>",
@@ -97,12 +97,10 @@
                     else
                         showPage(nextPageIdx);
                 });
-            }()),
+            }());
 
-            init = (function(jqueryCollection){
-                showPage(options.startPage);
-                return jqueryCollection;
-            }(this));
+            showPage(options.startPage);
+            return this;
         }
     });
 })(jQuery);
