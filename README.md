@@ -10,7 +10,7 @@ This small Jquery plugin is used to create pagination for a collection of items.
 ## Available Options:
 ```javascript
 $('.itemsToPaginate').pagination({
-	items: 5,
+	itemsPerPage: 5,
 		// Amount of items per page
 		// Accepted value type: int
 		// Default value: 5

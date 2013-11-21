@@ -4,29 +4,80 @@
 	<meta charset="UTF-8">
 	<title>Jquery Pagination</title>
 	<style type="text/css">
+		h1, .floatedItems, .blockItems{ width: 750px; margin: 0 auto; clear: both; }
+		.floatedItems .itemToPaginate{ float: left; }
+		
+		.floatedItems .itemsToPaginate div{ width: 50px; text-align: center; }
 
+		.itemsToPaginate div{
+			padding: 40px;
+			background: #eee;
+			margin: 10px;
+			float: left;
+		}
+
+		.paginationItem{ margin: 0 5px; }
+		.paginationItem.active{ font-weight: bold; }
 	</style>
 
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 	<script type="text/javascript" src="pagination.js"></script>
 	<script type="text/javascript">
 	$(function(){
-		$('.itemsToPaginate').pagination({
-
-		});
+		$('.itemsToPaginate div', '.floatedItems').pagination();
+		$('.itemsToPaginate div', '.blockItems').pagination({ itemsPerPage : 2 });
 	});
 	</script>
 </head>
 <body>
-	<div class="block">Im a box</div>
-	<div class="block">me too</div>
-	<div class="block">and me!</div>
-	<div class="block">am I?</div>
-	<div class="block">yes.</div>
-	<div class="block">Im a box</div>
-	<div class="block">me too</div>
-	<div class="block">and me!</div>
-	<div class="block">am I?</div>
-	<div class="block">yes.</div>
+	<h1>Jquery Pagination!</h1>
+	
+	<div class="floatedItems">
+		<h3>Floated Items</h3>
+
+		<div class="itemsToPaginate">
+			<div>BoxA!</div>
+			<div>BoxB!</div>
+			<div>BoxC!</div>
+			<div>BoxD!</div>
+			<div>BoxE!</div>
+			<div>BoxF!</div>
+			<div>BoxG!</div>
+			<div>BoxH!</div>
+			<div>BoxI!</div>
+			<div>BoxJ!</div>
+			<div>...</div>
+			<div>BoxZ!</div>
+		</div>
+	</div>
+	
+	<div class="blockItems">
+		<h3>Block Items</h3>
+
+		<div class="itemsToPaginate">
+			<div>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, quo, recusandae fugit a vel labore modi tempore maxime natus iste alias vero. Doloribus nihil architecto in eligendi temporibus et ipsa?</p>
+			</div>
+			<div>
+				<p>Eveniet, aut quibusdam sint tempora similique ad assumenda minus! Ipsum, veritatis, neque, quam consequatur quidem voluptatem in quae doloremque ea perferendis eligendi nobis tempora vel iure totam similique distinctio. Natus!</p>
+			</div>
+			<div>
+				<p>Id doloremque placeat omnis eius hic dolorum. Amet, explicabo, vero, totam, voluptates rem perspiciatis ipsum ratione illum fugit aliquid unde incidunt reiciendis ab nulla quo molestiae molestias sunt cum laboriosam.</p>
+			</div>
+			<div>
+				<p>Maxime, repellat, ab accusamus magni nisi molestiae laudantium aliquam aut non delectus vero sunt! Dicta, repudiandae unde nesciunt dolorum amet qui adipisci totam pariatur error minima ullam aliquid hic numquam.</p>
+			</div>
+			<div>
+				<p>Et, sapiente voluptates numquam dolorem officiis iusto atque eligendi at libero optio. Quam, recusandae aperiam quod labore provident fugit eaque atque omnis dignissimos delectus! Aperiam, nihil harum aliquam eius iste!</p>
+			</div>
+			<div>
+				<p>Repellendus, maiores, laboriosam dolorem sunt itaque quo perspiciatis pariatur voluptas distinctio libero accusamus neque ex voluptate cupiditate hic facilis quod recusandae aliquid porro magni maxime quas adipisci ipsam mollitia iste!</p>
+			</div>
+			<div>
+				<p>Architecto, alias, quasi atque minus cupiditate veritatis ea accusantium vitae sed minima rem pariatur molestias assumenda natus eos eveniet iste officia non consequuntur provident explicabo maxime accusamus ullam beatae labore?</p>
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>
