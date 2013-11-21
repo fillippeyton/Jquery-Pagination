@@ -43,17 +43,6 @@
             createPagination = (function(){
                 // Add pagination element to DOM
                 switch(options.navigationPosition.toLowerCase()){
-                    /*
-                    // TODO: Create ability to insert pagination after or before & after
-                    case 'both':
-                        itemsToPaginateContainer.before(paginationWrapper);
-                        itemsToPaginateContainer.after(paginationWrapper);
-                        break;
-                    
-                    case 'after':
-                        itemsToPaginateContainer.after(paginationWrapper);
-                        break;
-                    */
 
                     default:
                         itemsToPaginateContainer.before(paginationWrapper);
@@ -83,7 +72,6 @@
 
                 pagination.find('.' + options.prevClass).on('click', function(){
                     var prevPageIdx = pagination.find('.' + options.paginationItemActiveClass).index() - 1;
-                    // console.log(prevPageIdx);
                     if(prevPageIdx < 1)
                         showPage(numberOfPages);
                     else
@@ -97,10 +85,13 @@
                     else
                         showPage(nextPageIdx);
                 });
-            }());
+            }()),
 
-            showPage(options.startPage);
-            return this;
+            init = (function(jqueryCollection){
+                showPage(options.startPage);
+                return jqueryCollection;
+            })(this);
+
         }
     });
 })(jQuery);
