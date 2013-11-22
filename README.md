@@ -25,6 +25,7 @@ $('.itemsToPaginate').pagination({
 
 	navigationPosition : 'before',
 		// Set where the pagination controls appear, in relation to the paginated content
+		// Available values: 'before', 'after', 'both'
 		// Accepted value type: String
 		// Default value: 'before'
 
