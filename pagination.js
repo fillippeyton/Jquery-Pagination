@@ -57,7 +57,6 @@
 
                 // Selecting pagination element
                 pagination = itemsToPaginateContainer.siblings('.' + options.paginationClass);
-                console.log(pagination);
 
                 // Count how many pages to make
                 numberOfPages = Math.ceil( itemsToPaginate.length / options.itemsPerPage );
