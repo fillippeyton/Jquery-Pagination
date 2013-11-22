@@ -26,16 +26,14 @@
                 pagination,
                 numberOfPages,
 
-            showPage = function(goToPage){
-                var page = (typeof goToPage === 'number') ? goToPage : goToPage.attr('href').replace('#page', ''),
-                    itemRangeEnd = page * options.itemsPerPage
+            showPage = function(page){
+                var itemRangeEnd = page * options.itemsPerPage
                     itemRangeStart = itemRangeEnd - options.itemsPerPage;
 
                 $( '.' + options.paginationItemClass, pagination).removeClass(options.paginationItemActiveClass);
-                if (typeof goToPage === 'number')
-                    pagination.find('.' + options.paginationItemClass).eq(goToPage-1).addClass(options.paginationItemActiveClass);
-                else
-                    goToPage.addClass(options.paginationItemActiveClass);
+                pagination.each(function(){
+                    $(this).find('.' + options.paginationItemClass).eq(page-1).addClass(options.paginationItemActiveClass);
+                });
 
                 itemsToPaginate.hide().slice(itemRangeStart, itemRangeEnd).show();
             },
@@ -43,6 +41,14 @@
             createPagination = (function(){
                 // Add pagination element to DOM
                 switch(options.navigationPosition.toLowerCase()){
+                    case 'both':
+                        itemsToPaginateContainer.before(paginationWrapper);
+                        itemsToPaginateContainer.after(paginationWrapper);
+                        break;
+
+                    case 'after':
+                        itemsToPaginateContainer.after(paginationWrapper);
+                        break;
 
                     default:
                         itemsToPaginateContainer.before(paginationWrapper);
@@ -51,6 +57,7 @@
 
                 // Selecting pagination element
                 pagination = itemsToPaginateContainer.siblings('.' + options.paginationClass);
+                console.log(pagination);
 
                 // Count how many pages to make
                 numberOfPages = Math.ceil( itemsToPaginate.length / options.itemsPerPage );
@@ -67,10 +74,11 @@
             bindUIEvents = (function(){
                 pagination.find('.' + options.paginationItemClass + ':not(.' + options.nextClass + '):not(.' + options.prevClass + ')').on('click', function(e){
                     e.preventDefault();
-                    showPage( $(this) );
+                    showPage( pagination.find( $(this) ).index() );
                 });
 
-                pagination.find('.' + options.prevClass).on('click', function(){
+                pagination.find('.' + options.prevClass).on('click', function(e){
+                    e.preventDefault();
                     var prevPageIdx = pagination.find('.' + options.paginationItemActiveClass).index() - 1;
                     if(prevPageIdx < 1)
                         showPage(numberOfPages);
@@ -78,7 +86,8 @@
                         showPage(prevPageIdx);
                 });
 
-                pagination.find('.' + options.nextClass).on('click', function(){
+                pagination.find('.' + options.nextClass).on('click', function(e){
+                    e.preventDefault();
                     var nextPageIdx = pagination.find('.' + options.paginationItemActiveClass).index() + 1;
                     if(nextPageIdx > numberOfPages)
                         showPage(1);

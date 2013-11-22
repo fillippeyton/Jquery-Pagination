@@ -4,7 +4,8 @@
 	<meta charset="UTF-8">
 	<title>Jquery Pagination</title>
 	<style type="text/css">
-		h1, .floatedItems, .blockItems{ width: 750px; margin: 0 auto; clear: both; }
+		h1, .floatedItems, .blockItemsAfter, .blockItems{ width: 750px; margin: 0 auto; border-bottom: 1px solid #333; clear: both; }
+		.floatedItems:after{ content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
 		.floatedItems .itemToPaginate{ float: left; }
 		
 		.floatedItems .itemsToPaginate div{ width: 50px; text-align: center; }
@@ -16,6 +17,7 @@
 			float: left;
 		}
 
+
 		.paginationItem{ margin: 0 5px; }
 		.paginationItem.active{ font-weight: bold; }
 	</style>
@@ -25,7 +27,8 @@
 	<script type="text/javascript">
 	$(function(){
 		$('.itemsToPaginate div', '.floatedItems').pagination();
-		$('.itemsToPaginate div', '.blockItems').pagination({ itemsPerPage : 2 });
+		$('.itemsToPaginate div', '.blockItems').pagination({ navigationPosition: 'both', itemsPerPage : 2 });
+		$('.itemsToPaginate div', '.blockItemsAfter').pagination({ navigationPosition: 'after', itemsPerPage : 3 });
 	});
 	</script>
 </head>
@@ -33,7 +36,7 @@
 	<h1>Jquery Pagination!</h1>
 	
 	<div class="floatedItems">
-		<h3>Floated Items</h3>
+		<h3>Floated Items, Pagination Before</h3>
 
 		<div class="itemsToPaginate">
 			<div>BoxA!</div>
@@ -52,7 +55,35 @@
 	</div>
 	
 	<div class="blockItems">
-		<h3>Block Items</h3>
+		<h3>Block Items, Pagination Before/After</h3>
+
+		<div class="itemsToPaginate">
+			<div>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, quo, recusandae fugit a vel labore modi tempore maxime natus iste alias vero. Doloribus nihil architecto in eligendi temporibus et ipsa?</p>
+			</div>
+			<div>
+				<p>Eveniet, aut quibusdam sint tempora similique ad assumenda minus! Ipsum, veritatis, neque, quam consequatur quidem voluptatem in quae doloremque ea perferendis eligendi nobis tempora vel iure totam similique distinctio. Natus!</p>
+			</div>
+			<div>
+				<p>Id doloremque placeat omnis eius hic dolorum. Amet, explicabo, vero, totam, voluptates rem perspiciatis ipsum ratione illum fugit aliquid unde incidunt reiciendis ab nulla quo molestiae molestias sunt cum laboriosam.</p>
+			</div>
+			<div>
+				<p>Maxime, repellat, ab accusamus magni nisi molestiae laudantium aliquam aut non delectus vero sunt! Dicta, repudiandae unde nesciunt dolorum amet qui adipisci totam pariatur error minima ullam aliquid hic numquam.</p>
+			</div>
+			<div>
+				<p>Et, sapiente voluptates numquam dolorem officiis iusto atque eligendi at libero optio. Quam, recusandae aperiam quod labore provident fugit eaque atque omnis dignissimos delectus! Aperiam, nihil harum aliquam eius iste!</p>
+			</div>
+			<div>
+				<p>Repellendus, maiores, laboriosam dolorem sunt itaque quo perspiciatis pariatur voluptas distinctio libero accusamus neque ex voluptate cupiditate hic facilis quod recusandae aliquid porro magni maxime quas adipisci ipsam mollitia iste!</p>
+			</div>
+			<div>
+				<p>Architecto, alias, quasi atque minus cupiditate veritatis ea accusantium vitae sed minima rem pariatur molestias assumenda natus eos eveniet iste officia non consequuntur provident explicabo maxime accusamus ullam beatae labore?</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="blockItemsAfter">
+		<h3>Block Items, Pagination After</h3>
 
 		<div class="itemsToPaginate">
 			<div>
