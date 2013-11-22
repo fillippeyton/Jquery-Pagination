@@ -23,9 +23,9 @@ $('.itemsToPaginate').pagination({
 		// Accepted value type: Boolean
 		// Default value: true
 
-	// navigationPosition : 'before',
-		// Coming soon!
+	navigationPosition : 'before',
 		// Set where the pagination controls appear, in relation to the paginated content
+		// Available values: 'before', 'after', 'both'
 		// Accepted value type: String
 		// Default value: 'before'
 
